@@ -22,7 +22,7 @@ int StackLinkedList::pop()
 {
     if (tail == NULL)
     {
-        cout << "Stack is Empty";
+        cout << "Stack is Empty" << endl;
         return -1;
     }
 
@@ -42,7 +42,7 @@ void StackLinkedList::display()
 {
     if (tail == NULL)
     {
-        cout << "Stack is Empty";
+        cout << "Stack is Empty" << endl;
         return;
     }
 
