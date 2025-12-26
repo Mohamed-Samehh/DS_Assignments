@@ -1,0 +1,28 @@
+Mohamed Sameh Elkholy
+
+
+Bubble Sort: Can be implemented on a linked list. It’s inefficient (O(n²)), but works since it only needs to swap adjacent elements, which is feasible in linked lists.
+Linked List Suitability: Works
+Notes: Too slow
+
+
+Selection Sort: Can be implemented on a linked list. It’s also O(n²), but works because you can traverse to find the minimum and then move nodes.
+Linked List Suitability: Works
+Notes: Inefficient
+
+
+Insertion Sort: Well-suited for linked lists. It’s efficient for nearly sorted data and easy to insert nodes without shifting elements, making it better than bubble or selection sort for linked lists.
+Linked List Suitability: Best choice
+Notes: Uses list structure well
+
+
+Linear Search: Perfect for linked lists. You can traverse node by node, so it’s straightforward and efficient for unsorted data.
+Linked List Suitability: Ideal
+Notes: Natural fit
+
+
+Binary Search: Not suitable for linked lists. Binary search requires random access to the middle element, which is O(n) in a linked list. It can be done with a workaround (using slow/fast pointers), but it’s inefficient and defeats the purpose of binary search.
+Linked List Suitability: Not suitable
+Notes: No random access
+
+
