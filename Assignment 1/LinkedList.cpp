@@ -19,8 +19,8 @@ void LinkedList::addElement(int val)
         return;
     }
 
-    tail->setNext(newNode);
-    newNode->setPrev(tail);
+    tail->next = newNode;
+    newNode->prev = tail;
     tail = newNode;
 }
 
@@ -42,28 +42,30 @@ void LinkedList::removeElement(int val)
     // Target is the head
     else if (target == head)
     {
-        head = head->getNext();
-        head->setPrev(NULL);
+        head = head->next;
+        if (head)
+            head->prev = NULL;
     }
 
     // Target is the tail
     else if (target == tail)
     {
-        tail = tail->getPrev();
-        tail->setNext(NULL);
+        tail = tail->prev;
+        if (tail)
+            tail->next = NULL;
     }
 
     // Target is in the middle
     else
     {
-        Node *prevNode = target->getPrev();
-        Node *nextNode = target->getNext();
+        Node *prevNode = target->prev;
+        Node *nextNode = target->next;
 
         if (prevNode != NULL)
-            prevNode->setNext(target->getNext());
+            prevNode->next = target->next;
 
         if (nextNode != NULL)
-            nextNode->setPrev(target->getPrev());
+            nextNode->prev = target->prev;
     }
 
     delete target;
@@ -80,15 +82,15 @@ void LinkedList::removeAll(int val)
     Node *curr = head;
     while (curr != NULL)
     {
-        if (curr->getData() == val)
+        if (curr->data == val)
         {
             Node *temp = curr;
-            curr = curr->getNext();
-            removeElement(temp->getData());
+            curr = curr->next;
+            removeElement(temp->data);
         }
         else
         {
-            curr = curr->getNext();
+            curr = curr->next;
         }
     }
 }
@@ -105,10 +107,10 @@ Node *LinkedList::findElement(int val)
 
     while (curr != NULL)
     {
-        if (curr->getData() == val)
+        if (curr->data == val)
             return curr;
 
-        curr = curr->getNext();
+        curr = curr->next;
     }
 
     cout << "Element not found" << endl;
@@ -127,9 +129,9 @@ void LinkedList::displayList()
 
     while (curr != NULL)
     {
-        cout << curr->getData() << " ";
+        cout << curr->data << " ";
 
-        curr = curr->getNext();
+        curr = curr->next;
     }
 }
 
@@ -138,7 +140,7 @@ LinkedList::~LinkedList()
     while (head != NULL)
     {
         Node *curr = head;
-        head = head->getNext();
+        head = head->next;
         delete curr;
     }
 }
