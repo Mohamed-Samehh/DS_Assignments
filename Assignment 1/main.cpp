@@ -9,9 +9,9 @@ int main()
 
     list.addElement(10);
     list.addElement(20);
-    list.addElement(30);
-    list.addElement(20);
+    list.insertAfter(list.findElement(20), 30);
     list.addElement(40);
+    list.insertBefore(list.findElement(40), 20);
     list.addElement(20);
     list.addElement(20);
 
@@ -37,6 +37,9 @@ int main()
         cout << "Element " << searchVal << " found in the list." << endl;
     else
         cout << "Element " << searchVal << " not found in the list." << endl;
+
+    cout << "Data of node in index 1: " << list.getDataByIndex(1) << endl;
+    cout << "Count of nodes in the list: " << list.getCount() << endl;
 
     return 0;
 }

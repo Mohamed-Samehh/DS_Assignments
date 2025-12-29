@@ -95,6 +95,42 @@ void LinkedList::removeAll(int val)
     }
 }
 
+void LinkedList::insertAfter(Node *target, int val)
+{
+    Node *NewNode = new Node(val);
+
+    NewNode->next = target->next;
+
+    if (target->next)
+        target->next->prev = NewNode;
+    else
+        tail = NewNode;
+
+    target->next = NewNode;
+    NewNode->prev = target;
+}
+
+void LinkedList::insertBefore(Node *target, int val)
+{
+    Node *NewNode = new Node(val);
+
+    if (target == head)
+    {
+        NewNode->next = target;
+        target->prev = NewNode;
+        head = NewNode;
+        return;
+    }
+
+    NewNode->prev = target->prev;
+
+    if (target->prev)
+        target->prev->next = NewNode;
+
+    target->prev = NewNode;
+    NewNode->next = target;
+}
+
 Node *LinkedList::findElement(int val)
 {
     if (head == NULL)
@@ -115,6 +151,37 @@ Node *LinkedList::findElement(int val)
 
     cout << "Element not found" << endl;
     return NULL;
+}
+
+int LinkedList::getDataByIndex(int index)
+{
+    Node *curr = head;
+
+    for (int i = 0; i < index && curr != NULL; i++)
+    {
+        curr = curr->next;
+    }
+
+    if (curr == NULL)
+    {
+        return -1;
+    }
+
+    return curr->data;
+}
+
+int LinkedList::getCount()
+{
+    Node *curr = head;
+    int count = 0;
+
+    while (curr != NULL)
+    {
+        count++;
+        curr = curr->next;
+    }
+
+    return count;
 }
 
 void LinkedList::displayList()
