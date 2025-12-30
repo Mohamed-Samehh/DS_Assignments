@@ -10,6 +10,9 @@ int main()
     a.insert(10);
     a.insert(115); // Collision
     a.insert(215); // Collision
+    a.display();
+
+    cout << endl;
 
     a.search(215) ? cout << "Found" << endl : cout << "Not Found" << endl;
     a.search(10) ? cout << "Found" << endl : cout << "Not Found" << endl;
@@ -17,6 +20,9 @@ int main()
     a.search(15) ? cout << "Found" << endl : cout << "Not Found" << endl;
     a.search(22) ? cout << "Found" << endl : cout << "Not Found" << endl;
 
+    cout << endl;
+
+    a.remove(115);
     a.display();
 
     return 0;
