@@ -123,10 +123,7 @@ void LinkedList::insertBefore(Node *target, int val)
     }
 
     NewNode->prev = target->prev;
-
-    if (target->prev)
-        target->prev->next = NewNode;
-
+    target->prev->next = NewNode;
     target->prev = NewNode;
     NewNode->next = target;
 }
