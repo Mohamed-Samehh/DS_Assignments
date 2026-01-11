@@ -21,7 +21,8 @@ int main()
     cout << "25 in tree? ";
     bst.checkDataInTree(25) != false ? cout << "Found" << endl : cout << "Not Found" << endl;
 
-    cout << "45 in tree? ";
+    bst.removeNode(30);
+    cout << "30 in tree? ";
     bst.checkDataInTree(30) != false ? cout << "Found" << endl : cout << "Not Found" << endl;
 
     cout << "60 in tree? ";

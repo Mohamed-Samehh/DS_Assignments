@@ -179,17 +179,42 @@ void BinarySearchTree::removeNode(int data)
     // Case 3: The node has two children
     else if (current->right != nullptr && current->left != nullptr)
     {
-        // 3ashan temsa7ha hate7tag tegeb al most right beta3 al left subtree
+        // Find the in-order predecessor (max right of left subtree)
         Node *NewCurrent = getMaxRight(current->left);
+        Node *NewCurrentParent = getParent(NewCurrent);
 
-        // Ba3daha hat save al data de f makan 3ashan hane7tago
-        int NewCurrentData = NewCurrent->data;
+        // Attach NewCurrent's left child to its parent
+        // Note: NewCurrent cannot have a right child since it's the max right
+        if (NewCurrentParent == current)
+            current->left = NewCurrent->left; // Msh fahemha
+        else
+            NewCurrentParent->right = NewCurrent->left;
 
-        // Emsa7 al node mn ta7t 3ashan ne7otaha fo2
-        removeNode(NewCurrent->data);
+        // Re-link parent to NewCurrent
+        if (parent != nullptr)
+        {
+            if (parent->left == current)
+            {
+                parent->left = NewCurrent;
+            }
+            else
+            {
+                parent->right = NewCurrent;
+            }
+        }
+        else
+        {
+            root = NewCurrent;
+        }
 
-        // hatbadel al data al adema b data al NewNode al shelnaha mn ta7t
-        current->data = NewCurrentData;
+        // Attach children to NewCurrent (avoid self-link)
+        if (NewCurrent != current->left)
+            NewCurrent->left = current->left;
+
+        if (NewCurrent != current->right)
+            NewCurrent->right = current->right;
+
+        delete current;
     }
 }
 
